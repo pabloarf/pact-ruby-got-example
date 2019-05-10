@@ -1,0 +1,95 @@
+{
+  "consumer": {
+    "name": "Got Consumer"
+  },
+  "provider": {
+    "name": "Got Provider"
+  },
+  "interactions": [
+    {
+      "description": "una solicitud para obtener personajes",
+      "request": {
+        "method": "get",
+        "path": "/personajes",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "personaje": {
+              "nombre": "Arya Stark",
+              "edad": 18,
+              "casa": "Stark",
+              "actor": "Maisie Williams"
+            }
+          },
+          {
+            "personaje": {
+              "nombre": "Daenerys Targaryen",
+              "edad": 23,
+              "casa": "Targaryen",
+              "actor": "Emilia Clarke"
+            }
+          },
+          {
+            "personaje": {
+              "nombre": "Tyrion Lannister",
+              "edad": 38,
+              "casa": "Lannister",
+              "actor": "Peter Dinklage"
+            }
+          }
+        ],
+        "matchingRules": {
+          "$.body[0].personaje.nombre": {
+            "match": "type"
+          },
+          "$.body[0].personaje.edad": {
+            "match": "type"
+          },
+          "$.body[0].personaje.casa": {
+            "match": "type"
+          },
+          "$.body[0].personaje.actor": {
+            "match": "type"
+          },
+          "$.body[1].personaje.nombre": {
+            "match": "type"
+          },
+          "$.body[1].personaje.edad": {
+            "match": "type"
+          },
+          "$.body[1].personaje.casa": {
+            "match": "type"
+          },
+          "$.body[1].personaje.actor": {
+            "match": "type"
+          },
+          "$.body[2].personaje.nombre": {
+            "match": "type"
+          },
+          "$.body[2].personaje.edad": {
+            "match": "type"
+          },
+          "$.body[2].personaje.casa": {
+            "match": "type"
+          },
+          "$.body[2].personaje.actor": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
