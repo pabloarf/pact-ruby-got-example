@@ -7,23 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # require 'faker'
 
-Personaje.create(
-  nombre: 'Arya Stark',
-  edad: 18,
-  casa: 'Stark',
+Character.create(
+  name: 'Arya Stark',
+  age: 18,
+  house: 'Stark',
   actor: 'Maisie Williams'
 )
 
-Personaje.create(
-  nombre: 'Daenerys Targaryen',
-  edad: 23,
-  casa: 'Targaryen',
+Character.create(
+  name: 'Daenerys Targaryen',
+  age: 23,
+  house: 'Targaryen',
   actor: 'Emilia Clarke'
 )
 
-Personaje.create(
-  nombre: 'Tyrion Lannister',
-  edad: 38,
-  casa: 'Lannister',
+Character.create(
+  name: 'Tyrion Lannister',
+  age: 38,
+  house: 'Lannister',
   actor: 'Peter Dinklage'
 )

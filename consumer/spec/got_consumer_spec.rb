@@ -4,30 +4,30 @@ require_relative 'pact_helper'
 
 describe 'Got Consumer', pact: true do
   before do
-    # Interaccion
+    # Interaction
     got_provider_service
-        .given('existe una lista de personajes') # Precondicion
-        .upon_receiving('una solicitud para obtener personajes') # Solicitud requerida
+        .given('a list of characters exists') # Provider state
+        .upon_receiving('a request to get the characters') # Expected request
         .with(
             method: :get,
-            path: '/personajes',
+            path: '/characters',
             headers: {'Accept' => 'application/json'}
         )
-        .will_respond_with( # Respuesta esperada
+        .will_respond_with( # Minimal expected response
             status: 200,
             headers: { 'Content-Type' => Pact.term(generate: 'application/json', matcher: %r{^application\/json(;\s*charset=[\w-]+)?$}) },
             body: {
-                personajes: Pact.each_like(nombre: Pact.like('Arya Stark'), edad: Pact.like(18), casa: Pact.like('Stark'), actor: Pact.like('Maisie Williams'))
+                characters: Pact.each_like(name: Pact.like('Arya Stark'), age: Pact.like(18), house: Pact.like('Stark'), actor: Pact.like('Maisie Williams'))
             }
         )
   end
 
-  it 'devuelve personajes' do
-    # Solicitud al endpoint de nuestro provider
-    got_respuesta = Faraday.get(got_provider_service.mock_service_base_url + '/personajes', nil, {'Accept' => 'application/json'})
+  it 'returns a list of characters' do
+    # Request to the provider's endpoint
+    got_response = Faraday.get(got_provider_service.mock_service_base_url + '/characters', nil, {'Accept' => 'application/json'})
 
-    # Chequeamos que la respuesta fue un 200
-    # Aqui tambien se pueden chequear los atributos de la respuesta
-    expect(got_respuesta.status).to eql 200
+    # Checking the status code of the response
+    # Here we can also check the attributes of the response
+    expect(got_response.status).to eql 200
   end
 end
