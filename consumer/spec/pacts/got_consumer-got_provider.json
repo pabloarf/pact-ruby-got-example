@@ -8,6 +8,7 @@
   "interactions": [
     {
       "description": "una solicitud para obtener personajes",
+      "providerState": "existe una lista de personajes",
       "request": {
         "method": "get",
         "path": "/personajes",
@@ -20,67 +21,67 @@
         "headers": {
           "Content-Type": "application/json"
         },
-        "body": [
-          {
-            "personaje": {
+        "body": {
+          "personajes": [
+            {
               "nombre": "Arya Stark",
               "edad": 18,
               "casa": "Stark",
               "actor": "Maisie Williams"
-            }
-          },
-          {
-            "personaje": {
+            },
+            {
               "nombre": "Daenerys Targaryen",
               "edad": 23,
               "casa": "Targaryen",
               "actor": "Emilia Clarke"
-            }
-          },
-          {
-            "personaje": {
+            },
+            {
               "nombre": "Tyrion Lannister",
               "edad": 38,
               "casa": "Lannister",
               "actor": "Peter Dinklage"
             }
-          }
-        ],
+          ]
+        },
         "matchingRules": {
-          "$.body[0].personaje.nombre": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "^application\\/json(;\\s*charset=[\\w-]+)?$"
+          },
+          "$.body.personajes[0].nombre": {
             "match": "type"
           },
-          "$.body[0].personaje.edad": {
+          "$.body.personajes[0].edad": {
             "match": "type"
           },
-          "$.body[0].personaje.casa": {
+          "$.body.personajes[0].casa": {
             "match": "type"
           },
-          "$.body[0].personaje.actor": {
+          "$.body.personajes[0].actor": {
             "match": "type"
           },
-          "$.body[1].personaje.nombre": {
+          "$.body.personajes[1].nombre": {
             "match": "type"
           },
-          "$.body[1].personaje.edad": {
+          "$.body.personajes[1].edad": {
             "match": "type"
           },
-          "$.body[1].personaje.casa": {
+          "$.body.personajes[1].casa": {
             "match": "type"
           },
-          "$.body[1].personaje.actor": {
+          "$.body.personajes[1].actor": {
             "match": "type"
           },
-          "$.body[2].personaje.nombre": {
+          "$.body.personajes[2].nombre": {
             "match": "type"
           },
-          "$.body[2].personaje.edad": {
+          "$.body.personajes[2].edad": {
             "match": "type"
           },
-          "$.body[2].personaje.casa": {
+          "$.body.personajes[2].casa": {
             "match": "type"
           },
-          "$.body[2].personaje.actor": {
+          "$.body.personajes[2].actor": {
             "match": "type"
           }
         }
