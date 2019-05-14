@@ -1,6 +1,7 @@
-require 'faraday'
+# require 'faraday'
 require 'pact/consumer/rspec'
 require_relative 'pact_helper'
+require_relative '../iron_throne.rb'
 
 describe 'Got Consumer', pact: true do
   before do
@@ -24,8 +25,7 @@ describe 'Got Consumer', pact: true do
 
   it 'returns a list of characters' do
     # Request to the provider's endpoint
-    got_response = Faraday.get(got_provider_service.mock_service_base_url + '/characters', nil, {'Accept' => 'application/json'})
-
+    got_response = IronThrone.get_characters
     # Checking the status code of the response
     # Here we can also check the attributes of the response
     expect(got_response.status).to eql 200
